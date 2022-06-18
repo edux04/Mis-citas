@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Mis_citas.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<citasContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
 
 var app = builder.Build();
 
